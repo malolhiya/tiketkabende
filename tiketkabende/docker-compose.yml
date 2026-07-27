@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+
+  # ===== APLIKASI LARAVEL =====
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wisata-ende-app
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      APP_NAME: "Wisata Ende"
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: wisata_ende
+      DB_USERNAME: wisata_user
+      DB_PASSWORD: wisata_pass
+    volumes:
+      - ./storage/app/public:/var/www/html/storage/app/public
+    depends_on:
+      - db
+    networks:
+      - wisata-network
+
+  # ===== DATABASE MYSQL =====
+  db:
+    image: mysql:8.0
+    container_name: wisata-ende-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wisata_ende
+      MYSQL_USER: wisata_user
+      MYSQL_PASSWORD: wisata_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - wisata-network
+
+  # ===== PHPMYADMIN (opsional, untuk lihat isi database lewat browser) =====
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: wisata-ende-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root_pass
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - wisata-network
+
+networks:
+  wisata-network:
+    driver: bridge
+
+volumes:
+  db-data:

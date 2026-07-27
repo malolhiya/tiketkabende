@@ -1,59 +1,182 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎫 Sistem E-Ticketing Wisata Kabupaten Ende
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem informasi pemesanan tiket wisata berbasis web untuk objek-objek wisata di Kabupaten Ende, Nusa Tenggara Timur. Aplikasi ini dibangun menggunakan **Laravel** dengan tampilan **Bootstrap**, dan database **MySQL**, untuk menggantikan sistem pemesanan tiket manual dengan sistem digital yang lebih efisien, transparan, dan mudah dipantau baik oleh pengunjung maupun pengelola.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Deskripsi Aplikasi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Aplikasi ini memungkinkan wisatawan untuk melihat daftar destinasi wisata populer di Kabupaten Ende (seperti Danau Kelimutu, Pantai Enabara, Bukit Liaga, dan lainnya), memesan tiket kunjungan secara online, melakukan pembayaran melalui transfer bank/e-wallet, dan menerima e-tiket berbentuk QR Code yang dapat dipindai oleh petugas di lokasi wisata untuk verifikasi keaslian tiket.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Di sisi lain, admin memiliki dashboard khusus untuk mengelola seluruh data pemesanan, destinasi wisata, pengguna terdaftar, metode pembayaran, serta laporan penjualan tiket.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ✨ Fitur Utama
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Untuk Pengunjung (User)
+- Registrasi dan login akun
+- Melihat daftar destinasi wisata lengkap dengan gambar, lokasi, deskripsi, harga, dan peta lokasi (Google Maps)
+- Memesan tiket dengan memilih destinasi, tanggal kunjungan, dan jumlah tiket
+- Melakukan pembayaran dengan memilih metode (transfer bank/e-wallet) dan mengunggah bukti pembayaran
+- Melihat riwayat pemesanan beserta statusnya (menunggu, dikonfirmasi, ditolak, dibatalkan, refund)
+- Menerima notifikasi refund dari admin beserta alasannya, dan melakukan pembayaran ulang jika ada kekurangan bayar
+- Mengunduh/mencetak e-tiket berisi QR Code setelah pemesanan dikonfirmasi
 
-## Laravel Sponsors
+### Untuk Admin
+- Dashboard ringkasan statistik (total pemesanan, total pengguna, jumlah destinasi, total pendapatan)
+- **Kelola Pemesanan** — konfirmasi, tolak, refund (dengan catatan alasan & nominal kurang bayar), hapus pemesanan, serta melihat bukti pembayaran pengguna
+- **Kelola Destinasi** — tambah, edit, dan hapus destinasi wisata beserta harga, lokasi, deskripsi, dan gambar
+- **Kelola Pengguna** — melihat daftar seluruh pengguna terdaftar dan menghapus akun pengguna
+- **Kelola Metode Pembayaran** — tambah, edit, aktif/nonaktifkan metode pembayaran (bank/e-wallet) yang otomatis muncul di halaman checkout
+- **Laporan Penjualan** — ringkasan penjualan harian/bulanan, serta ekspor data ke CSV dan Excel
+- **Verifikasi Tiket** — memindai QR Code tiket pengunjung untuk memeriksa keabsahan dan menandai tiket sebagai sudah digunakan
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🖥️ Teknologi yang Digunakan
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Komponen | Teknologi |
+|---|---|
+| Backend Framework | Laravel 12 |
+| Bahasa Pemrograman | PHP 8.2 |
+| Frontend | Blade Templating Engine + Bootstrap 5 |
+| Database | MySQL 8.0 |
+| Autentikasi | Laravel Auth (session-based) |
+| Kontainerisasi | Docker & Docker Compose |
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📖 Panduan Penggunaan
 
-## Code of Conduct
+### Alur Pengunjung (User)
+1. Buka halaman utama, klik **Daftar** untuk membuat akun baru, atau **Masuk** jika sudah punya akun.
+2. Setelah login, buka menu **Destinasi** untuk melihat pilihan wisata.
+3. Klik **Pesan Sekarang** pada destinasi yang diinginkan.
+4. Isi tanggal kunjungan dan jumlah tiket, lalu klik **Lanjut ke Pembayaran**.
+5. Pilih metode pembayaran, transfer sesuai nominal, lalu unggah bukti pembayaran.
+6. Setelah admin mengonfirmasi, tiket berstatus **Dikonfirmasi** dan e-tiket berisi QR Code dapat diunduh/dicetak dari menu **Dashboard Saya**.
+7. Tunjukkan QR Code kepada petugas di lokasi wisata untuk verifikasi masuk.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Alur Admin
+1. Login menggunakan akun dengan role `admin`.
+2. Admin otomatis diarahkan ke **Dashboard Administrator**.
+3. Gunakan menu navigasi (Kelola Pemesanan, Kelola Destinasi, Kelola Pengguna, Metode Pembayaran, Laporan) untuk mengelola sistem.
+4. Untuk memverifikasi tiket pengunjung di lokasi wisata, buka halaman `/verifikasi` di perangkat petugas, lalu pindai QR Code atau masukkan kode booking secara manual.
 
-## Security Vulnerabilities
+### Akun Admin Default
+Setelah instalasi, buat akun admin melalui perintah berikut (lihat langkah lengkap di bagian Docker di bawah):
+```
+Email    : admin@wisataende.com
+Password : admin123
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🐳 Panduan Menjalankan Aplikasi dengan Docker
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aplikasi ini sudah dilengkapi konfigurasi Docker sehingga dapat dijalankan tanpa perlu menginstal PHP, Composer, atau MySQL secara manual di komputer.
+
+### Prasyarat
+- [Docker](https://www.docker.com/products/docker-desktop/) dan Docker Compose sudah terinstal di komputer.
+
+### 1. Clone repository
+```bash
+git clone https://github.com/username/tiketkabende.git
+cd tiketkabende
+```
+
+### 2. Siapkan file environment
+Salin file contoh environment, lalu sesuaikan jika perlu (nilai default sudah cocok dengan `docker-compose.yml`):
+```bash
+cp .env.example .env
+```
+
+### 3. Build dan jalankan container
+```bash
+docker compose up -d --build
+```
+
+Perintah ini akan menjalankan 3 container:
+| Service | Fungsi | Akses |
+|---|---|---|
+| `app` | Aplikasi Laravel (PHP + Apache) | http://localhost:8000 |
+| `db` | Database MySQL | localhost:3307 |
+| `phpmyadmin` | Antarmuka untuk melihat isi database | http://localhost:8080 |
+
+Saat pertama kali dijalankan, container `app` akan otomatis:
+- Menunggu database siap
+- Generate `APP_KEY`
+- Menjalankan migration (`php artisan migrate`)
+- Membuat storage link (`php artisan storage:link`)
+
+### 4. Buat akun admin
+Setelah container berjalan, buat akun admin dengan masuk ke dalam container:
+```bash
+docker compose exec app php artisan tinker
+```
+Lalu jalankan:
+```php
+\App\Models\User::create([
+    'name' => 'Administrator',
+    'email' => 'admin@wisataende.com',
+    'phone' => '0000000000',
+    'password' => bcrypt('admin123'),
+    'role' => 'admin',
+]);
+```
+Ketik `exit` untuk keluar.
+
+### 5. Akses aplikasi
+Buka browser dan kunjungi:
+```
+http://localhost:8000
+```
+
+### Perintah Docker yang berguna
+```bash
+# Melihat log aplikasi
+docker compose logs -f app
+
+# Masuk ke terminal container
+docker compose exec app bash
+
+# Menjalankan artisan command
+docker compose exec app php artisan migrate:fresh --seed
+
+# Menghentikan seluruh container
+docker compose down
+
+# Menghentikan container sekaligus menghapus volume database (reset total)
+docker compose down -v
+```
+
+---
+
+## 🗂️ Struktur Direktori Utama
+
+```
+tiketkabende/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/       # AuthController, dsb.
+│   │   └── Middleware/        # IsAdmin.php
+│   └── Models/                # User, Booking, Destinasi, MetodePembayaran
+├── database/
+│   └── migrations/            # Skema tabel: users, bookings, destinasi, metode_pembayaran
+├── resources/
+│   └── views/                 # Seluruh tampilan Blade (booking, payment, dashboard-admin, dst.)
+├── routes/
+│   └── web.php                # Seluruh routing aplikasi
+├── public/                    # Document root Laravel
+├── Dockerfile                 # Konfigurasi image Docker aplikasi
+├── docker-compose.yml         # Orkestrasi container app + db + phpmyadmin
+├── docker-entrypoint.sh       # Script otomatisasi setup saat container start
+└── README.md
+```
+
+---
+
+## 👤 Kontribusi & Lisensi
+
+Proyek ini dikembangkan sebagai bagian dari Tugas Akhir/Skripsi Program Studi Sistem Informasi. Silakan hubungi penulis untuk pertanyaan lebih lanjut terkait pengembangan atau penggunaan kode ini.
