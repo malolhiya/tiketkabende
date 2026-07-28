@@ -5,7 +5,7 @@ echo "🚀 Menyiapkan aplikasi Laravel..."
 
 # Tunggu MySQL siap menerima koneksi sebelum lanjut
 echo "⏳ Menunggu database MySQL siap..."
-until mysqladmin ping -h"${DB_HOST:-db}" -u"${DB_USERNAME:-root}" -p"${DB_PASSWORD:-}" --silent; do
+until mysqladmin ping -h"${DB_HOST:-db}" -u"${DB_USERNAME:-root}" -p"${DB_PASSWORD:-}" --ssl=0 --silent; do
     sleep 2
 done
 echo "✅ Database siap."
